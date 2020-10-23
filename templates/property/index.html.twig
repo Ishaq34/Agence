@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les biens | Agence Immo{% endblock %}
+
+{% block body %}
+
+<header class="masthead" style="background-image:url('assets/img/biens.jpg'); height: 70vh;">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created with love.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</header>
+
+<div class="container mt-5 text-center">
+    <h2> Les biens </h2>
+    <div class ="row flex">
+        {% for property in properties %}
+        <div class="col-3">
+            <div class= "card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                    <a href=" {{ path('property_show', {'id': property.id, 'slug': property.slug} )}}">{{ property.title }} </a>
+                    </h5>
+                    <p class="card-text text-dark">{{ property.city }} ({{property.postalCode}})</p>
+                    <div class="text-primary">{{ property.FormatedPrice}}$</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
